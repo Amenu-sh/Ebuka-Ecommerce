@@ -34,15 +34,15 @@ export default function PortalFooter() {
             className="text-center mb-20 md:mb-28"
           >
             <p className="font-mono text-[11px] tracking-[0.2em] uppercase text-background/50 mb-6">
-              For Store Owners
+              Either you’re a merchant looking to join, or a shopper looking for something new.
             </p>
             <h2 className="font-display text-4xl md:text-6xl lg:text-7xl leading-[0.9] tracking-tight mb-8">
-              Your store deserves
+              You both deserve <br />
               <br />
               <span className="italic text-primary">a bigger stage</span>
             </h2>
             <p className="font-body text-base md:text-lg text-background/60 max-w-lg mx-auto mb-10 leading-relaxed">
-              Join the curated network of visionary merchants. Submit your store for review and reach a new audience of discerning shoppers.
+              Join the curated network of visionary merchants. Submit your design/jewelry for review and reach a new audience of discerning shoppers.
             </p>
             <motion.a
               href="#"
@@ -50,7 +50,7 @@ export default function PortalFooter() {
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-mono text-sm tracking-[0.1em] uppercase hover:bg-primary/90 transition-colors duration-300"
             >
-              Submit Your Store
+              Submit Your Design
               <ArrowUpRight className="w-4 h-4" strokeWidth={1.5} />
             </motion.a>
           </motion.div>
@@ -93,7 +93,7 @@ export default function PortalFooter() {
           {/* Bottom bar */}
           <div className="border-t border-background/10 mt-16 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-background/30">
-              © 2026 Commerce Conduit. All rights reserved.
+              © 2026 Ladidier ECommerce. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               {['Privacy', 'Terms', 'Contact'].map((item) => (

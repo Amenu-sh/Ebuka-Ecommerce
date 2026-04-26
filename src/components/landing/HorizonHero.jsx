@@ -60,7 +60,7 @@ export default function HorizonHero({ heroImage }) {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="font-mono text-[10px] sm:text-xs tracking-[0.18em] sm:tracking-[0.2em] uppercase text-muted-foreground mb-6 sm:mb-8 md:mb-12"
           >
-            Commerce Conduit — Curated Digital Retail
+            Ladidier eCommerce — Curated Digital Retail
           </motion.p>
 
           {/* Main headline */}
