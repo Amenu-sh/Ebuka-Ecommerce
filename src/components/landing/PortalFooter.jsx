@@ -106,6 +106,15 @@ export default function PortalFooter() {
                 </a>
               ))}
             </div>
+            <p className="font-mono text-[10px] tracking-[0.15em] uppercase text-background/30">
+              <a
+                 
+                  href="https://amenushi.com" target="_blank" rel="noopener noreferrer"
+                  className="font-mono text-[10px] tracking-[0.15em] uppercase text-background/30 hover:text-primary transition-colors duration-300"
+                >
+                  Designed & Built by Amenu Shilbe
+                </a>
+            </p>
           </div>
         </div>
       </div>
