@@ -3,9 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const categories = ['Apparel', 'Jewelry', 'Beauty', 'Accessories', 'Art & Design'];
 
-export default function HorizonHero({ heroImage }) {
+export default function HorizonHero({ heroImages = [] }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const images = heroImages.length > 0 ? heroImages : ['/images/EbukaHero.png'];
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -14,6 +17,14 @@ export default function HorizonHero({ heroImage }) {
     }, 2800);
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveImageIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   const cycleCategory = () => {
     setIsAutoPlaying(false);
@@ -25,24 +36,30 @@ export default function HorizonHero({ heroImage }) {
     <section id="hero" className="relative w-full min-h-screen overflow-hidden flex items-center justify-center">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
-        <img
-          src={heroImage}
-          alt="Premium texture background"
-          className="w-full h-full object-cover"
-        />
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={images[activeImageIndex]}
+            src={images[activeImageIndex]}
+            alt={`Banner slide ${activeImageIndex + 1}`}
+            className="absolute inset-0 w-full h-full object-cover"
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '-100%' }}
+            transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1] }}
+          />
+        </AnimatePresence>
         <div className="absolute inset-0 bg-background/70" />
       </div>
 
       <a
         href="#hero"
-        className="absolute top-2 left-2 sm:top-1 sm:left-1 z-20 inline-flex items-center gap-3 rounded-br-2xl border-r border-b border-foreground/15 bg-background/70 px-4 py-3 sm:px-5 sm:py-4 backdrop-blur-md"
+        className="absolute top-2 left-2 sm:top-1 sm:left-1 z-20 inline-flex items-center rounded-br-2xl border-r border-b border-foreground/15 bg-background/85 px-4 py-3 sm:px-5 sm:py-4 shadow-lg backdrop-blur-md"
       >
-        <span className="inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-primary text-primary-foreground font-semibold text-sm sm:text-base">
-          E
-        </span>
-        <span className="font-mono text-xs sm:text-sm tracking-[0.18em] sm:tracking-[0.2em] uppercase text-foreground/90">
-          Ebuka
-        </span>
+        <img
+          src="/images/Ebukalogo.jpg"
+          alt="Ebuka logo"
+          className="h-14 w-auto sm:h-16 md:h-20 object-contain"
+        />
       </a>
 
       {/* Content */}
@@ -102,6 +119,24 @@ export default function HorizonHero({ heroImage }) {
                 }}
                 className={`w-1.5 h-1.5 rounded-full transition-all duration-500 ${
                   i === activeIndex ? 'bg-primary w-6' : 'bg-foreground/20'
+                }`}
+              />
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 0.6 }}
+            className="mt-5 flex items-center justify-center gap-2 flex-wrap"
+          >
+            {images.map((image, i) => (
+              <button
+                key={image}
+                onClick={() => setActiveImageIndex(i)}
+                aria-label={`Go to banner slide ${i + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  i === activeImageIndex ? 'w-8 bg-primary' : 'w-3 bg-foreground/25 hover:bg-foreground/45'
                 }`}
               />
             ))}

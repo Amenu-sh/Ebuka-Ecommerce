@@ -41,13 +41,13 @@ export default function StoreCard({ store, index, isFeatured = false }) {
       />
 
       {/* Image container */}
-      <div className={`relative overflow-hidden ${isFeatured ? 'aspect-[4/5]' : 'aspect-[3/4]'}`}>
+      <div className="relative overflow-hidden">
         <motion.img
           src={images[activeImage]}
           alt={store.name}
-          className="w-full h-full object-cover"
+          className="block w-full h-auto"
           animate={{
-            scale: isHovered ? 1.05 : 1,
+            scale: isHovered ? 1.02 : 1,
           }}
           transition={{ duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
         />

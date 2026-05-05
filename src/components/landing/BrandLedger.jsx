@@ -1,18 +1,8 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { STORE_CATALOG } from '../../lib/storeLinks';
 
-const ledgerStores = [
-  { name: 'Atelier Noir', category: 'Apparel', status: 'Live', url: '#' },
-  { name: 'Volt Supply', category: 'Technology', status: 'Live', url: '#' },
-  { name: 'Casa Forma', category: 'Home & Living', status: 'Live', url: '#' },
-  { name: 'Skin Theory', category: 'Beauty', status: 'New', url: '#' },
-  { name: 'Thread & Bone', category: 'Accessories', status: 'Live', url: '#' },
-  { name: 'Pixel Foundry', category: 'Art & Design', status: 'Live', url: '#' },
-  { name: 'Matte Studio', category: 'Home & Living', status: 'New', url: '#' },
-  { name: 'Drift Goods', category: 'Apparel', status: 'Live', url: '#' },
-  { name: 'Lume Optics', category: 'Technology', status: 'Live', url: '#' },
-  { name: 'Forme Botanics', category: 'Beauty', status: 'New', url: '#' },
-];
+const ledgerStores = STORE_CATALOG;
 
 export default function BrandLedger() {
   return (

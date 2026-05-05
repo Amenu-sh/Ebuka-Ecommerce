@@ -1,22 +1,39 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { PRIMARY_STORE_URL, getStoreByName } from '../../lib/storeLinks';
 
 const lifestyleClusters = [
   {
-    title: 'The Minimalist Home',
-    links: ['Casa Forma', 'Matte Studio', 'Forma Goods'],
+    title: 'Home & Lifestyle',
+    links: [
+      getStoreByName('Ladidier Maison'),
+      getStoreByName('Posh Paw Pet Supplies'),
+      getStoreByName('Merry Wigs'),
+    ],
   },
   {
-    title: 'The Urban Tech-Wearer',
-    links: ['Volt Supply', 'Lume Optics', 'Pixel Foundry'],
+    title: 'Beauty & Wellness',
+    links: [
+      getStoreByName('Ladidier Cosmetics'),
+      getStoreByName('Ladidier Beauty Essence'),
+      getStoreByName('The Scnt Shop'),
+    ],
   },
   {
-    title: 'The Conscious Curator',
-    links: ['Skin Theory', 'Forme Botanics', 'Thread & Bone'],
+    title: 'Style & Apparel',
+    links: [
+      getStoreByName('Ladidier Jewelry'),
+      getStoreByName('Adeva Store'),
+      getStoreByName('Ladidier Homme'),
+    ],
   },
   {
-    title: 'The Style Architect',
-    links: ['Atelier Noir', 'Drift Goods', 'Axis Apparel'],
+    title: 'Travel & Leisure',
+    links: [
+      getStoreByName('Just Rippin'),
+      getStoreByName('Piata Noir Roast'),
+      getStoreByName('Ladidier Maison'),
+    ],
   },
 ];
 
@@ -45,7 +62,9 @@ export default function PortalFooter() {
               Join the curated network of visionary merchants. Submit your design/jewelry for review and reach a new audience of discerning shoppers.
             </p>
             <motion.a
-              href="#"
+              href={PRIMARY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-mono text-sm tracking-[0.1em] uppercase hover:bg-primary/90 transition-colors duration-300"
@@ -74,12 +93,14 @@ export default function PortalFooter() {
                     </h4>
                     <ul className="space-y-2">
                       {cluster.links.map((link) => (
-                        <li key={link}>
+                        <li key={link.name}>
                           <a
-                            href="#"
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="font-mono text-xs tracking-[0.03em] text-background/40 hover:text-primary transition-colors duration-300"
                           >
-                            {link}
+                            {link.name}
                           </a>
                         </li>
                       ))}
@@ -99,7 +120,9 @@ export default function PortalFooter() {
               {['Privacy', 'Terms', 'Contact'].map((item) => (
                 <a
                   key={item}
-                  href="#"
+                  href={PRIMARY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-mono text-[10px] tracking-[0.15em] uppercase text-background/30 hover:text-primary transition-colors duration-300"
                 >
                   {item}
